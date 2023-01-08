@@ -1,4 +1,4 @@
-defmodule Issues.GithubIssues do
+defmodule Issues.GitHubIssues do
   @user_agent [{"User-agent", "Elixir dave@pragprog.com"}]
 
   def fetch(user, project) do
@@ -7,8 +7,11 @@ defmodule Issues.GithubIssues do
     |> handle_response()
   end
 
+  # fetch config from config.exs in compile time
+  @github_url Application.compile_env(:issues, :github_url)
+
   def issues_url(user, project) do
-    "https://api.github.com/repos/#{user}/#{project}/issues"
+    "#{@github_url}/repos/#{user}/#{project}/issues"
   end
 
   def handle_response({_, %{status_code: status_code, body: body}}) do
