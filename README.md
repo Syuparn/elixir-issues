@@ -8,6 +8,8 @@ A simple CLI to fetch GitHub issues
 
 ```
 # build
+$ mix deps
+$ mix deps.get
 $ mix escript.build
 
 # help
@@ -23,4 +25,14 @@ $ ./issues elixir-lang elixir 5
 12315 | 2022-12-27T04:23:24Z | Add ability for System.cmd/3 to return lines
 12318 | 2023-01-05T22:17:27Z | Weird App Dependency Errors in Umbrella
 12320 | 2023-01-06T01:00:48Z | Makefile has race conditions (exposed by -j4)
+```
+
+
+## For developers
+
+```bash
+# run tests
+$ mix test
+# generate docs in ./doc
+$ mix doc
 ```
