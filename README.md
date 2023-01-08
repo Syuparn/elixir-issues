@@ -35,6 +35,9 @@ $ ./issues elixir-lang elixir 5
 $ mix test
 # generate docs in ./doc
 $ mix doc
+
 # get test coverage
 $ mix coveralls
+# or report to cover/excoveralls.html
+$ mix coveralls.html
 ```
