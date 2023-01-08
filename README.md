@@ -1,21 +1,26 @@
 # Issues
 
-**TODO: Add description**
+A simple CLI to fetch GitHub issues
 
-## Installation
+(This is practice code in "Programming Elixir" chapter 13)
 
-If [available in Hex](https://hex.pm/docs/publish), the package can be installed
-by adding `issues` to your list of dependencies in `mix.exs`:
+## Usage
 
-```elixir
-def deps do
-  [
-    {:issues, "~> 0.1.0"}
-  ]
-end
 ```
+# build
+$ mix escript.build
 
-Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_doc)
-and published on [HexDocs](https://hexdocs.pm). Once published, the docs can
-be found at <https://hexdocs.pm/issues>.
+# help
+$ ./issues -h
+usage: issues <user> <project> [ count | 4 ]
 
+# fetch the latest 5 issues in elixir-lang/elixir
+$ ./issues elixir-lang elixir 5
+#     | created_at           | title
+------+----------------------+----------------------------------------------
+12301 | 2022-12-15T16:00:58Z | Let `pid/1` parse a pid's inspection string
+12312 | 2022-12-25T16:50:37Z | Cache body of defmodule when possible
+12315 | 2022-12-27T04:23:24Z | Add ability for System.cmd/3 to return lines
+12318 | 2023-01-05T22:17:27Z | Weird App Dependency Errors in Umbrella
+12320 | 2023-01-06T01:00:48Z | Makefile has race conditions (exposed by -j4)
+```
