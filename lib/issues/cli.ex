@@ -44,7 +44,8 @@ defmodule Issues.CLI do
     usage: issues <user> <project> [ count | #{@default_count} ]
     """)
 
-    System.halt(0) # exit 0
+    # exit 0
+    System.halt(0)
   end
 
   def process({user, project, count}) do
@@ -52,11 +53,13 @@ defmodule Issues.CLI do
     |> decode_response()
     |> sort_into_descending_order()
     |> last(count)
+    |> Issues.Table.generate_issue_table()
   end
 
   def decode_response({:ok, body}), do: body
+
   def decode_response({:error, error}) do
-    IO.puts "Error fetching from GitHub: #{error["message"]}"
+    IO.puts("Error fetching from GitHub: #{error["message"]}")
     System.halt(2)
   end
 
