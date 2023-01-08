@@ -44,10 +44,17 @@ defmodule Issues.CLI do
     usage: issues <user> <project> [ count | #{@default_count} ]
     """)
 
-    System.halt(0)
+    System.halt(0) # exit 0
   end
 
   def process({user, project, _count}) do
     Issues.GitHubIssues.fetch(user, project)
+    |> decode_response()
+  end
+
+  def decode_response({:ok, body}), do: body
+  def decode_response({:error, error}) do
+    IO.puts "Error fetching from GitHub: #{error["message"]}"
+    System.halt(2)
   end
 end
